@@ -1,95 +1,149 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import React from "react";
+import Image from "next/image";
+import styles from "./page.module.css";
+import data from "./data";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
+const Brand = ({ shopName }) => (
+  <div className={styles.brand}>
+    <div className={styles["brand-log"]} id="Logo">
+      <Image src="/img/Ellipse 157.png" width={50} height={50} alt="aa" />
+    </div>
+    <div className={styles["brand-name-box"]}>
+      <h3 className={styles["brand-name"]}>{shopName}</h3>
+      <h5>Food Influencer</h5>
+    </div>
+  </div>
+);
+
+const FoodItem = ({ food }) => (
+  <div className={styles.food}>
+    <div>
+      <Image
+        src="/img/Ellipse 28.png"
+        width={56}
+        height={56}
+        alt="aa"
+        className={styles.foodLogo}
+      />
+    </div>
+    <div className={styles.foodName}>
+      <p>{food.foodName}</p>
+      <p className={styles.foodTime}>{food.foodTime}</p>
+    </div>
+    <div className={styles.foodDetailsBox}>
+      <div className={styles.foodKcal}>
+        <p>{food.foodKcal}</p>
+      </div>
+      <Image
+        src="/img/plus.png"
+        width={12}
+        height={12}
+        alt="aaa"
+      />
+    </div>
+  </div>
+);
+
+const Coupon = () => (
+  <div className={styles.couponBox}>
+    <h2>Meals Coupon</h2>
+    <div id="offe" className={styles.offers}>
+      <div className={styles.days}>
+        <h6>27th Jan - 18th Feb</h6>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <p>UPTO </p>
+          <p>25% OFF </p>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={styles.coupon}>
+        <p className={styles.couponOffer}>Chinese</p>
+        <h3>₹299/-</h3>
+        <p className={styles.couponOffer}>
+          22% + 30% off - Expires in 1h
+        </p>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.coupon}>
+        <p className={styles.couponOffer}>Chinese</p>
+        <h3>₹299/-</h3>
+        <p className={styles.couponOffer}>
+          22% + 30% off - Expires in 1h
+        </p>
       </div>
-    </main>
-  )
-}
+      <div className={styles.coupon}>
+        <p className={styles.couponOffer}>Chinese</p>
+        <h3>₹299/-</h3>
+        <p className={styles.couponOffer}>
+          22% + 30% off - Expires in 1h
+        </p>
+      </div>
+      <div className={styles.coupon}>
+        <p className={styles.couponOffer}>Chinese</p>
+        <h3>₹299/-</h3>
+        <p className={styles.couponOffer}>
+          22% + 30% off - Expires in 1h
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const Home = () => (
+  <main>
+    <Image
+      src="/img/Rectangle 5629.jpg"
+      width={500}
+      height={900}
+      style={{ position: "fixed", zIndex: "-1" }}
+      alt="aa"
+    />
+
+    <div>
+      <Image
+        src="/img/Vector.png"
+        className={styles["share"]}
+        width={15}
+        height={16}
+        alt="aa"
+      />
+
+      {data.map((item) => (
+        <>
+          <Brand shopName={item.shopName} />
+
+          <div className={styles["item-box"]}>
+            <div className={styles.stroke}>
+              <Image
+                src="/img/Stroke 1.png"
+                width={13}
+                height={7}
+                alt="aaa"
+              />
+            </div>
+            <div className={styles["item-details"]}>
+              <h2>Food Centre</h2>
+            </div>
+            {item.itemsType.map((items) => (
+              <div className="items-type-box">
+                <div className={styles["food-type-box"]}>
+                  <h2>{items.type}</h2>
+                  <button>{items.countryType}</button>
+                </div>
+                {items.food.map((ite) => (
+                  <FoodItem key={ite.foodName} food={ite} />
+                ))}
+              </div>
+            ))}
+
+            <Coupon />
+            <div>
+              <button className={styles["order"]}>Order Now</button>
+            </div>
+          </div>
+        </>
+      ))}
+    </div>
+  </main>
+);
+
+export default Home;
